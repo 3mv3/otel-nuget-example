@@ -1,0 +1,43 @@
+{
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        //"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "OpenTelemetry.AutoInstrumentation.AspNetCoreBootstrapper",
+        //"CORECLR_ENABLE_PROFILING": "1",
+        //"CORECLR_PROFILER": "{918728DD-259F-4A6A-AC2B-B85E1B658318}",
+        //"CORECLR_PROFILER_PATH": "$(TargetDir)\\runtimes\\win-x64\\native\\OpenTelemetry.AutoInstrumentation.Native.dll",
+        "DOTNET_STARTUP_HOOKS": "$(TargetDir)\\OpenTelemetry.AutoInstrumentation.StartupHook.dll",
+        "OTEL_DOTNET_AUTO_HOME": "$(TargetDir)",
+        "OTEL_LOG_LEVEL": "debug",
+        "OTEL_SERVICE_NAME": "webapplication1",
+        "OTEL_TRACES_EXPORTER": "jaeger",
+        "OTEL_METRICS_EXPORTER": "jaeger",
+        "OTEL_LOGS_EXPORTER": "jaeger",
+
+        // This works on licensing... but not here. In licensing, all metrics are exported to console. This does nothing here.
+        "OTEL_DOTNET_AUTO_LOGGER": "console"
+        //"OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED": "true",
+        //"OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED": "true",
+        //"OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED": "true"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5291"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_HTTPS_PORTS": "8081",
+        "ASPNETCORE_HTTP_PORTS": "8080"
+      },
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json"
+}
